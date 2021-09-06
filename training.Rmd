@@ -1,0 +1,13 @@
+---
+title: "WCB Training Course"
+author:  "WCB Bioinformatics Core Facility"
+output:
+  html_document:
+    fig_width: 1
+---
+
+------------------------------------------------------------------------
+
+This is a list of training courses currently run by WCB bioinformatics.
+
+-   R Training
