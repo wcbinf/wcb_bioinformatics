@@ -1,0 +1,17 @@
+name: "R Markdown Websites Tutorial"
+navbar:
+  title: "HOME"
+  left:
+    - text: "Training Courses"
+      href: training.html
+    - text: "Best Practices"
+      href: best_practices.html
+    - text: "Further resources"
+      href: resources.html
+output_dir: "."
+output:
+  html_document:
+    theme: yeti
+    highlight: textmate
+#    include:
+#      after_body: _footer.html

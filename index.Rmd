@@ -1,0 +1,21 @@
+---
+title: "WCB Training and Resources"
+author:  "WCB Bioinformatics Core Facility"
+output:
+  html_document:
+    fig_width: 1
+---
+
+----
+
+This is the homepage for training and resources at the WCB Bioinformatics Core Facility at the University of Edinburgh. You will find a list of training courses run by our facility and provided online for self study, as well as 'best practice' documentation for using our in house servers.
+
+<br>
+
+![](images/CELL_BIOLOGY_RGB.png){ width=50% }
+
+<br>
+
+----
+
+For more information contact [Shaun Webb](mailto:shaun.webb@ed.ac.uk).
