@@ -1,0 +1,23 @@
+---
+title: "Best Practices"
+author:  "WCB Bioinformatics Core Facility"
+output:
+  html_document:
+    fig_width: 1
+    toc: true
+    toc_depth: 2
+---
+
+This page contains a list of best practice documents for managing bioinformatics projects and working on the WCB servers.
+
+-   [Running and managing software on WCB servers](software.html)
+
+    -   Command-line tools
+
+    -   Specialised bioinformatics tools
+
+    -   Manage your own software with Conda
+
+    -   Manage R packages
+
+    -   Manage Perl packages

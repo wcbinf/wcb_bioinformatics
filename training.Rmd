@@ -1,13 +1,195 @@
 ---
-title: "WCB Training Course"
+title: "WCB Training Courses"
 author:  "WCB Bioinformatics Core Facility"
 output:
   html_document:
     fig_width: 1
+    toc: true
+    toc_depth: 2
 ---
+
+This page is intended to provide a set of resources for those interested in learning about bioinformatics and acquiring new skills. It is by no means a comprehensive list of online training materials and does not cover everything you need to know to become a skilled bioinformatician. However, it should be enough to get you started and we will happily add more subjects if they are of interest to members of the centre.
+
+Our dedicated bioinformatics servers provide an expansive list of tools via the Linux command line, an RStudio server and access to programming languages and libraries such as Python and Perl. If you require an account, please contact [Shaun Webb](mailto:shaun.webb@ed.ac.uk).
 
 ------------------------------------------------------------------------
 
-This is a list of training courses currently run by WCB bioinformatics.
+## Linux command line
 
--   R Training
+Linux operating systems are the workhorse for most large scale genomics applications and are well suited to managing and processing huge data files produced by high throughput sequencing technologies. Although command-line computing can be daunting to new users, grasping a few fundamental commands and learning to run software packages and pipelines from the terminal will open new doors
+
+#### Beginner
+
+-   [WCB introduction to Linux course](http://bifx-core.bio.ed.ac.uk/hyweldd/training/Bioinformatics_on_the_Command_Line/)
+
+-   [Command line cheat-sheet](https://files.fosswire.com/2007/08/fwunixref.pdf)
+
+-   [The Unix shell](http://swcarpentry.github.io/shell-novice/)
+
+-   [Command line for Genomics](https://datacarpentry.org/shell-genomics/)
+
+#### Intermediate
+
+-   [Reproducible research](https://nbis-reproducible-research.readthedocs.io/)
+
+    -   git, Conda, Snakemake, R Markdown, Jupyter, Docker and Singularity
+
+-   Package management with Conda (coming soon)
+
+    -   [Getting started with Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html)
+
+    -   [Conda cheatsheet](https://docs.conda.io/projects/conda/en/latest/_downloads/843d9e0198f2a193a3484886fa28163c/conda-cheatsheet.pdf)
+
+-   Running automated pipelines (coming soon)
+
+------------------------------------------------------------------------
+
+## Programming in R
+
+R is a programming language designed for data retrieval, manipulation and visualisation as well as statistical analysis. Learning R will allow you to move beyond spreadsheets and access the full analysis potential of large datasets. You can build multi-dimensional visualisations as well as interactive web applications and documents. It's easy to get to grips with the basics of R and the [RStudio](https://rstudio.com/) interface provides an intuitive graphical environment in which to develop your code. The extensive [Bioconductor](https://www.bioconductor.org/) libraries also provide pre-built functions to analyse and interpret all sorts of genomic datasets.
+
+#### Beginner
+
+-   [WCB Introduction to R course](https://swebb1.github.io/R_Training/)
+
+    -   RStudio, base R, Tidyverse packages
+
+-   [R Cheatsheets](https://rstudio.com/resources/cheatsheets/)
+
+#### Beginner - Intermediate
+
+-   [R for Data Science](https://r4ds.had.co.nz/)
+
+#### Advanced topics
+
+-   [Advanced R](https://adv-r.hadley.nz/)
+
+-   [R Packages](https://r-pkgs.org/)
+
+-   [WCB Genomic data in R](http://bifx-core.bio.ed.ac.uk/training/ROI_workshop/R_roi_workshop.html)
+
+-   [R Markdown lessons](https://rmarkdown.rstudio.com/lesson-1.html)
+
+-   [Build Shiny applications](https://shiny.rstudio.com/tutorial/)
+
+------------------------------------------------------------------------
+
+## Programming in Python
+
+Python is a general-purpose programming language that is becoming increasingly popular with data scientists. Python has a growing number of libraries for data manipulation, exploration and visualisation as well as machine learning and is ideal for deploying applications and reproducible code. [Jupyter](https://jupyter.org/) notebooks provide an interactive development environment for coding in Python and other languages.
+
+#### Beginner - Intermediate
+
+-   [Python data science handbook](https://jakevdp.github.io/PythonDataScienceHandbook/)
+
+    -   [Accompanying videos](https://www.youtube.com/watch?v=_ZEWDGpM-vM&list=PLYCpMb24GpOC704uO9svUrihl-HY1tTJJ)
+
+-   [Programming with Python](http://swcarpentry.github.io/python-novice-inflammation/)
+
+#### Advanced topics
+
+-   Building pipelines with SnakeMake
+
+    -   [SnakeMake Tutorial](https://snakemake.readthedocs.io/en/stable/tutorial/tutorial.html)
+
+    -   [SnakeMake slides](https://slides.com/johanneskoester/snakemake-short#/)
+
+------------------------------------------------------------------------
+
+## Statistics for biology
+
+While there are countless resources for learning statistics and a wealth of engaging videos on Youtube, it is important for bioinformaticians to understand statistics in the context of biology. Knowledge of statistical analysis will allow you to correctly describe and make inferences from your data as well as designing meaningful and useful experiments. Here are some links to get started:
+
+-   [Introduction to Stats](https://docs.google.com/presentation/d/1qmtT3W6oylWs9xxeJ0WsNHyHbK6TiUJQsEQtFFVpMtU/edit?usp=sharing) (slides)
+
+-   [Introduction to statistics](https://www.bioinformatics.babraham.ac.uk/training/R_Statistics/Introduction%20to%20Statistics%20with%20R%20manual.pdf) with R
+
+-   [Points of Significance](https://www.nature.com/collections/qghhqm/pointsofsignificance) (Nature collection)
+
+-   [Statistics for biologists](https://www.nature.com/collections/qghhqm) (Nature collection)
+
+-   [Statistical learning](https://drive.google.com/open?id=1e9X5Tc4F8meqYWJOZn-Y2R7BcmjbQVg_) (comprehensive stats applied in R)
+
+-   [Roslin Institute Video Tutorials](https://media.ed.ac.uk/channel/The+Roslin+Institute+-+Training/40716141)
+
+------------------------------------------------------------------------
+
+## Analysing HTS experiments
+
+The tutorials below provide introductions to analysing specific types of high throughput sequencing experiments. They are designed to help you understand your data, complete generic processing steps and explore and interpret the output. Please note the pre-requisite skills in brackets.
+
+In most cases, the pipelines provided are simple and generic and may not be suitable for your own analysis. The bioinformatics core facility is available to collaborate on your project and to offer advice on experimental design and data analysis strategies. We also provide an expansive set of software tools and analysis workflows accessible through our bioinformatics servers:
+
+#### ChIP-seq
+
+-   [WCB ChIP-seq analysis workshop](https://danrobertson87.github.io/2020_chip-seq_workshop.github.io) (Linux command line)
+
+#### RNA-seq
+
+-   [WCB Introduction to Next-Gen Sequencing data analysis](http://bifx-core.bio.ed.ac.uk/training/NGS_workshop/NGS_workshop.html) (Linux command line)
+
+-   [Differential expression with DESeq2](https://www.bioconductor.org/packages/devel/workflows/vignettes/rnaseqGene/inst/doc/rnaseqGene.html) (R)
+
+-   [RNA-seq and differential expression analysis](https://ucdavis-bioinformatics-training.github.io/2019_March_UCSF_mRNAseq_Workshop/) (command line and R)
+
+#### Hi-C
+
+-   [WCB Hi-C data analysis workshop](http://bifx-core.bio.ed.ac.uk/Dan/Training/HiC_Workshop/HiC_Workshop_2019.html) (command line)
+
+#### CLIP/CRAC
+
+-   [PyCRAC manual](https://bitbucket.org/sgrann/pycrac/src/default/The%20pyCRAC%20Manual.pdf)
+
+#### CLASH
+
+-   [Hyb methods paper](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3969109/)
+
+#### Methyl-seq
+
+-   [QC and alignment of BS-seq data using Bismark](https://www.bioinformatics.babraham.ac.uk/training/Methylation_Course/Basic%20BS-Seq%20processing%20Exercises.pdf) (command line)
+
+#### Annotating and plotting genomic data
+
+-   [WCB Genomic data in R](http://bifx-core.bio.ed.ac.uk/training/ROI_workshop/R_roi_workshop.html) (R)
+
+------------------------------------------------------------------------
+
+## Further Bioinformatics Training Resources
+
+[Edinburgh Genomics](https://genomics.ed.ac.uk/services/training)
+
+-   Training programme for Edinburgh Genomics workshops and online courses.
+
+[Carpentries](https://carpentries.org/)
+
+-   Community driven project delivering training in data science and coding skills. [Software Carpentry](https://software-carpentry.org/) and [Data Carpentry](http://www.datacarpentry.org/) websites include many free online courses. [Edinburgh Carpentries](https://edcarp.github.io/) host regular events at the university and include a Data Carpentry for Genomics course.
+
+[HarvardX](http://rafalab.github.io/pages/harvardx.html)
+
+-   A comprehensive set of courses covering R, Python, and biostatistics among other things. Includes case studies in analysing RNA-seq, ChIP-seq and Methyl-seq data.
+
+[Harvard Chan Bioinformatics Core](https://github.com/hbctraining)
+
+-   Training courses in R including many different HTS techniques.
+
+[Babraham Bioinformatics](https://www.bioinformatics.babraham.ac.uk/training.html)
+
+-   Training courses offered by the Babraham Bioinformatics group in R, Python, statistics and sequencing applications.
+
+-   Bitesize bioinformatics [modules](https://tinyurl.com/bitebioinf) and [videos](https://www.youtube.com/playlist?list=PLbiByRpDb_hP7b-I1GR4eEWCD2OqdZEg1)
+
+[Rockefeller Bioinformatics](https://rockefelleruniversity.github.io/training.html)
+
+-   A collection of bioinformatics training courses
+
+[Biodatascience](https://biodatascience.github.io/)
+
+-   A collection of R courses in data science, statistics and computational biology.
+
+[Datacamp](http://www.datacamp.com/)
+
+-   Interactive learning with videos, lessons, tests and a built-in programming interface. Datacamp is a subscription service with some free modules for learning R, Python and data science skills.
+
+[UoC bioinformatics core](https://github.com/bioinformatics-core-shared-training)
+
+-   A collection of bioinformatics training courses from the University of Cambridge bioinformatics core facility.

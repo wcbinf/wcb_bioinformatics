@@ -1,0 +1,267 @@
+---
+title: "Running and managing software"
+author:  "WCB Bioinformatics Core Facility"
+output:
+  html_document:
+    fig_width: 1
+    toc: true
+    toc_depth: 2
+---
+
+------------------------------------------------------------------------
+
+## Running command line tools
+
+The command line tools available on the server can be classified as either standard GNU/Linux utilities or specialised bioinformatics tools.
+
+### Standard GNU/Linux utilities
+
+The server provides access to a wide range of standard GNU/Linux utilities, which are installed in /usr/bin. \* A general introduction to the use of these utilities can be found at <http://bifx-core.bio.ed.ac.uk/hyweldd/training/Bioinformatics_on_the_Command_Line/index.html> \* A complete list of the available utilities can be obtained by running `ls /usr/bin` on the commmand line. More information on individual utilities can be accessed by running `man [NAME OF UTILITY]` \* A detailed manual covering many of the utilities available can be accessed by running the `info` command on the command line
+
+### Specialised bioinformatics tools
+
+Specialised bioinformatics tools are implemented on the server as singularity containers. The main benefit of this approach is that it allows multiple versions of the same tool to be installed in parallel on the server. This gives us a way of ensuring that the latest versions of software tools are available on the server without breaking existing user scripts and pipelines that rely on old versions. Each singularity container is accompanied by a wrapper script that enables users to call the corresponding tool directly. There are also two helper scripts: `tools`, which enables users to list the tools available, and `versions`, which lists the available versions of the tools. It is possible to run a tool by specifying its name as listed in the output of the `tools` command, or to run a specific version of a tool by including the version number as shown in the output of the `versions` command.
+
+We recommend that you specify a particular version of any tools that are included in scripts. Calling the tool by name only generally runs to the latest version of the tool, which may change over time as new versions are installed. This could cause problems for scripts that were written to use older versions of the tool.
+
+The `man` and `info` commands do not provide help for specialised bioinformatics tools on bifx-core. As an alternative, many tools provide help when run with the `--help` or `-h` flags, and provide version information when run with the `--version` or sometimes `-version` flags.
+
+Specialised bioinformatics tools, or specific versions of tools, that are not currently installed on bifx-core can be requested by contacting the WCB bioinformatics core facility.
+
+#### Case study: bedtools
+
+In this example, we show how to list and run different versions of bedtools on bifx-core:
+
+    hyweldd@bifx-core3:~$ tools
+    alignmentSieve
+    bamCompare
+    bamCoverage
+    bamPEFragmentSize
+    bedtools
+    ...
+    hyweldd@bifx-core3:~$ bedtools --version
+    bedtools v2.30.0
+    hyweldd@bifx-core3:~$ bedtools --help
+    bedtools is a powerful toolset for genome arithmetic.
+
+    Version:   v2.30.0
+    About:     developed in the quinlanlab.org and by many contributors worldwide.
+    ...
+    hyweldd@bifx-core3:~$ versions bedtools
+    bedtools-2.29.2
+    bedtools-2.30.0
+    hyweldd@bifx-core3:~$ bedtools-2.29.2 --version
+    bedtools v2.29.2
+    hyweldd@bifx-core3:~$ bedtools-2.30.0 --version
+    bedtools v2.30.0
+    hyweldd@bifx-core3:~$ 
+
+------------------------------------------------------------------------
+
+## Managing your own software tools and packages with conda
+
+In the preceding section, we have shown how to run command line tools that are installed on bifx-core. In addition to using these tools, it is also possible to manage your own software tools and environments using conda (see <https://docs.conda.io/projects/conda/en/latest/> for more details). This is currently our recommended method for managing python packages and versions, which may be necessary if you are developing your own python scripts. While conda does provide the ability to manage R packages, we do not currently recommend using conda for this purpose. Our best practices for working with R packages are discussed later in this guide.
+
+### Installing conda
+
+If you would like to use conda, we recommend that you install it in your home directory using the miniconda installer. You can do this using the following steps:
+
+1.  Download the miniconda installer into your home directory by navigating to your home directory and running `wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh`
+2.  Calculate the md5 checksum of the downloaded installer by running the command `md5sum Miniconda3-latest-Linux-x86_64.sh` and check that it is the same as the value shown at <https://repo.anaconda.com/miniconda/> for the `Miniconda3-latest-Linux-x86_64.sh` script
+3.  If the checksums match, install conda by running `sh Miniconda3-latest-Linux-x86_64.sh` and following the steps
+
+-   When asked about the license terms, review and accept them (type `yes`)
+-   Accept the offer to install conda to the default location `/homes/[YOUR USERNAME]/miniconda3` by pressing `ENTER`
+-   Accept the offer to initialise miniconda3 by using conda init by typing `yes`
+
+4.  When the installer has finished, log out from bifx-core3, then log back in and run `conda --version` to verify that conda has been installed
+5.  Run `conda update conda` to ensure that conda is up to date
+6.  Run `conda config --set auto_activate_base false` to prevent the base environment from being activated automatically on login
+
+### Setting up your conda channels
+
+In conda, software tools and packages are downloaded from remote repositories known as channels. conda provides its own default channels, but we recommend that users add the following two community mantained channels as well: - `bioconda`, which is dedicated to the distribution of bioinformatics software, and contains a far wider selection of bioinformatics tools than the default conda channels - `conda-forge`, which is a large community led channel that provides a wide range of software, including some tools that are required as dependencies by some bioinformatics tools distributed via the `bioconda` channel
+
+We recommend that you add the `bioconda` channel with high priority, and the `conda-forge` channel with low priority, using the following steps: 1. Run `conda config --add channels bioconda` to add bioconda with high priority 2. Run `conda config --append channels conda-forge` to add conda-forge with low priority 3. Run `conda config --show channels`. You should see the following:
+
+    channels:
+        - bioconda
+        - defaults
+        - conda-forge
+
+*Note:* If the channels do not appear in the correct order, you can run `conda config --remove channels bioconda`, then `conda config --remove channels conda-forge`, then try again.
+
+### Managing conda environments
+
+By default, conda installs software tools into the directory in which it was installed, which is known as the *base environment*. You can check the location of this directory by running `conda info`. If you followed the steps above to install conda, this is the default location `/homes/[YOUR USERNAME]/miniconda3`.
+
+One of the benefits of using conda to manage bioinformatics software is that it allows you to create different environments and easily switch between them. This is particularly useful if you work on multiple projects that use different bioinformatics software. Each user created environment has a dedicated directory stored in the `env` subdirectory of the base environment directory.
+
+We recommend that you should always create your own conda environment to install software and leave the base environment as it is, even if you do not need multiple environments, as user environments are easier to modify and update than the base environment.
+
+The following commands can be used to create and manage conda environments: - `conda create -n [ENVIRONMENT NAME] [LIST OF PACKAGES TO INSTALL IN THE ENVIRONMENT (optional)]` to create a new conda environment - `conda activate [ENVIRONMENT NAME]` to activate a conda environment - `conda deactivate` to deactivate a conda environment - `conda env list` to list the conda environments, showing which is active - `conda remove` to remove an environment - `conda env export` to export an environment to a yaml file - `conda search` to search for a software package - `conda install` to install a software package in the active environment
+
+A useful guide to conda commands can be found here:
+
+<https://docs.conda.io/projects/conda/en/latest/user-guide/cheatsheet.html>
+
+------------------------------------------------------------------------
+
+## Using R on bifx-core servers
+
+We recommend that you use RStudio to perform R analyses on the bifx-core servers. RStudio server is installed on bifx-core3, and can be accessed from within the University of Edinburgh network at the following url:
+
+[bifx-rstudio.bio.ed.ac.uk](bifx-rstudio.bio.ed.ac.uk)
+
+### Managing R packages with Renv
+
+Renv is a tool that is similar to conda, in that it makes it possible to create multiple environments, but is specialised for use with R, is implemented as an R package, and can be managed from the R console. You can learn more about Renv here:
+
+<https://rstudio.github.io/renv/articles/renv.html>
+
+------------------------------------------------------------------------
+
+## Using perl on bifx-core servers
+
+A number of different options are available for running perl scripts on bifx-core. We provide system wide installations that should be sufficient for most applications, and users also have the option of managing their own perl installations if they need specific perl versions or modules.
+
+### System-wide perl installations on bifx-core servers
+
+The system perl implementation on bifx-core, `/usr/bin/perl`, does not come with any extra packages, such as BioPerl packages, installed system wide. In order to run BioPerl scripts, we provide a custom containerised installation of perl, `/library/software/bin/bioperl`, that does include many of the BioPerl packages. This is our recommended version to use for most applications.
+
+### Managing your own perl environment
+
+While we expect that `/library/software/bin/bioperl` should be sufficient for most bioinformatics applications, it may be necessary for some users to manage their own perl environments. We recommend the use of either `conda` or `perlbrew` for this purpose, as both allow users to manage local installations of `perl` without requiring administrator permissions.
+
+Both `conda` and `perlbrew` have strengths and weaknesses relative to each other, so the choice of which to use depends on the user's particular requirements.
+
+`conda` provides a quick and easy way of managing `perl` installations and environments, and can also be used to install other tools, as described earlier in this guide. However, when using `conda` to manage a perl installation, packages are installed using conda recipes rather than from CPAN. This may cause problems as not all perl packages have conda recipes available, and the conda recipe corresponding to a particular package may be difficult to find even when it exists.
+
+By contrast `perlbrew` provides access to all CPAN packages through the `cpan` command, giving access to a wider range of packages. The main drawback of `perlbrew` when compared to `conda` is that it builds everything from source rather than providing pre-built packages. This makes the process of installing packages more time consuming, and also potentially more difficult if a particular CPAN package fails to build due to missing dependencies or failing tests. A further limitation of `perlbrew` when compared to `conda` is that it does not allow you to maintain different environments using the same version of `perl`.
+
+We describe how to set up a local installation of `perl` using `conda` and `perlbrew` in the following sections.
+
+#### Managing your own perl installation with conda
+
+We provide a conda environment containing the same packages as the environment used by `/library/software/bin/bioperl` in `/library/software/conda_environments/BioPerl-1.7.2/BioPerl-1.7.2.yml`. This can be used to add some additional packages, as in the following example (note that this example assumes that conda has already been installed, as described in the previous section).
+
+    $ conda env create -f /library/software/conda_environments/BioPerl-1.7.2/BioPerl-1.7.2.yml
+    Collecting package metadata (repodata.json): done
+    Solving environment: done
+    Preparing transaction: done
+    Verifying transaction: done
+    Executing transaction: done
+    #
+    # To activate this environment, use
+    #
+    #     $ conda activate bioperl-1.7.2
+    #
+    # To deactivate an active environment, use
+    #
+    #     $ conda deactivate
+    $ conda activate bioperl-1.7.2
+    $ which perl
+    ~/miniconda3/envs/bioperl-1.7.2/bin/perl
+    $ perl -E 'use DateTime; say "Success!"'
+    Can't locate DateTime.pm in @INC (you may need to install the DateTime module) (@INC contains: /homes/hyweldd/miniconda3/envs/bioperl-1.7.2/lib/site_perl/5.26.2/x86_64-linux-thread-multi /homes/hyweldd/miniconda3/envs/bioperl-1.7.2/lib/site_perl/5.26.2 /homes/hyweldd/miniconda3/envs/bioperl-1.7.2/lib/5.26.2/x86_64-linux-thread-multi /homes/hyweldd/miniconda3/envs/bioperl-1.7.2/lib/5.26.2 .) at -e line 1.
+    BEGIN failed--compilation aborted at -e line 1.
+    $ conda search perl-datetime
+    Loading channels: done
+    # Name                       Version           Build  Channel
+    perl-datetime                   1.42      pl5.22.0_0  bioconda
+    perl-datetime                   1.42 pl526h2d50403_2  bioconda
+    $ conda install perl-datetime
+    Collecting package metadata (current_repodata.json): done
+    Solving environment: done
+        
+    ...
+
+    Preparing transaction: done
+    Verifying transaction: done
+    Executing transaction: done
+    $ perl -E 'use DateTime; say "Success!"'
+    Success!
+    $ 
+
+#### Managing your own perl installation with perlbrew
+
+To use `perlbrew`, you must first install it into your home directory. Once this is done, you can use the `perlbrew` command to install `perl` versions and download packages from CPAN for each version. The following example walks through the process of installing `perlbrew`, using it to install `perl 5.32.1`, and installing the DateTime package from CPAN using the `cpan` command. Further information on `perlbrew` can be found at [https://perlbrew.pl](https://perlbrew.pl/).
+
+    $ curl -L https://install.perlbrew.pl | bash
+      % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                     Dload  Upload   Total   Spent    Left  Speed
+    100   170  100   170    0     0    168      0  0:00:01  0:00:01 --:--:--   168
+    100  1574  100  1574    0     0   1263      0  0:00:01  0:00:01 --:--:--  1263
+
+    ## Download the latest perlbrew
+
+    ## Installing perlbrew
+    Using Perl </usr/bin/perl>
+    perlbrew is installed: ~/perl5/perlbrew/bin/perlbrew
+
+    perlbrew root (~/perl5/perlbrew) is initialized.
+
+    Append the following piece of code to the end of your ~/.bash_profile and start a
+    new shell, perlbrew should be up and fully functional from there:
+
+        source ~/perl5/perlbrew/etc/bashrc
+
+    Simply run `perlbrew` for usage details.
+
+    Happy brewing!
+
+    ## Installing patchperl
+
+    ## Done.
+    $ echo 'source ~/perl5/perlbrew/etc/bashrc' >> ~/.bash_profile
+    $ source ~/.bash_profile
+    $ which perlbrew
+    ~/perl5/perlbrew/bin/perlbrew
+    $ perlbrew --notest install 5.32.1
+    Installing /homes/hyweldd/perl5/perlbrew/build/perl-5.32.1/perl-5.32.1 into ~/perl5/perlbrew/perls/perl-5.32.1
+
+    This could take a while. You can run the following command on another shell to track the status:
+
+      tail -f ~/perl5/perlbrew/build.perl-5.32.1.log
+
+    perl-5.32.1 is successfully installed.
+    $ perlbrew use 5.32.1
+    $ cpan DateTime
+    Loading internal logger. Log::Log4perl recommended for better logging
+    Reading '/homes/hyweldd/.cpan/Metadata'
+      Database was generated on Fri, 04 Jun 2021 20:55:40 GMT
+    Running install for module 'DateTime'
+    Fetching with HTTP::Tiny:
+    http://www.cpan.org/authors/id/D/DR/DROLSKY/DateTime-1.54.tar.gz
+
+    ...
+
+      DROLSKY/DateTime-1.54.tar.gz
+      /usr/bin/make install  -- OK
+    $ perlbrew list-modules
+
+    ...
+
+    DateTime
+
+    ...
+
+    $ which perl
+    ~/perl5/perlbrew/perls/perl-5.32.1/bin/perl
+    $ perl -v | grep version
+    This is perl 5, version 32, subversion 1 (v5.32.1) built for x86_64-linux
+    $ perl -E 'use DateTime; say "Success!"'
+    Success!
+    $ 
+
+*Note:* Due to the way the network is set up, installing BioPerl on bifx-core requires the `NO_NETWORK_TESTING` environment variable to be set, so the correct cpan command for installing BioPerl would be:
+
+    $ NO_NETWORK_TESTING=1 cpan BioPerl
+
+For further information, see <https://github.com/libwww-perl/libwww-perl/issues/370>.
+
+------------------------------------------------------------------------
+
+## Using jupyter notebook on bifx-core servers
+
+[to come]
