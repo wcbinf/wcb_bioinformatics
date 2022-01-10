@@ -10,6 +10,8 @@ output:
 
 This page contains a list of best practice documents for managing bioinformatics projects and working on the WCB servers.
 
+-   [Bioinformatics server user policy](user_policy.html)
+
 -   [Running and managing software on WCB servers](software.html)
 
     -   Command-line tools

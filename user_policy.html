@@ -12,7 +12,7 @@
 <meta name="author" content="WCB Bioinformatics Core Facility" />
 
 
-<title>WCB Training and Resources</title>
+<title>Bioinformatics servers: User policy</title>
 
 <script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
@@ -304,19 +304,104 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">WCB Training and Resources</h1>
+<h1 class="title toc-ignore">Bioinformatics servers: User policy</h1>
 <h4 class="author">WCB Bioinformatics Core Facility</h4>
 
 </div>
 
+<div id="TOC">
+<ul>
+<li><a href="#servers">Servers</a></li>
+<li><a href="#data-policy">Data policy</a></li>
+<li><a href="#data-management">Data management</a></li>
+<li><a href="#server-usage">Server usage</a></li>
+<li><a href="#software-and-updates">Software and updates</a></li>
+<li><a href="#backups">Backups</a></li>
+<li><a href="#mailing-list">Mailing list</a></li>
+</ul>
+</div>
 
 <hr />
-<p>This is the homepage for training and resources at the WCB Bioinformatics Core Facility at the University of Edinburgh. You will find a list of training courses run by our facility and provided online for self study, as well as ‘best practice’ documentation for using our in house servers.</p>
-<p><br></p>
-<p><img src="images/CELL_BIOLOGY_RGB.png" style="width:50.0%" /></p>
-<p><br></p>
-<hr />
-<p>For more information contact <a href="mailto:shaun.webb@ed.ac.uk">Shaun Webb</a>.</p>
+<div id="servers" class="section level2">
+<h2>Servers</h2>
+<p>These servers are fully paid for by the Wellcome Trust Centre for Cell Biology and are managed by the bioinformatics core facility.</p>
+<p>Servers on the domains: .bio.ed.ac.uk</p>
+<ul>
+<li>bifx-core2: Command line usage, R-Studio</li>
+<li>bifx-core3: Command line usage, R-Studio, R-Shiny, Web-server</li>
+</ul>
+</div>
+<div id="data-policy" class="section level2">
+<h2>Data policy</h2>
+<ul>
+<li><p>No personal data should be stored on the bifx-* servers. All data should be related to projects associated with the Wellcome Centre unless dispensation has been given by the centre director.</p></li>
+<li><p>All data on the bifx-* servers can be viewed by members of the bioinformatics core or the centre director.</p></li>
+<li><p>As the bioinformatics core group has superuser permissions, we can see all data on the server. Instructions on how to access the servers are lodged with the centre director in case of emergency. Therefore s/he is a de-facto administrator.</p></li>
+<li><p>Your data can be accessed by your PI on request. No request is needed if the PI has an account on the server and can view your files. The data stored on the servers should only relate to the Wellcome Centre PI grant holder for the projects and therefore it is reasonable that they can access their own data.</p></li>
+<li><p>Users are responsible for their own data (see backup policy).</p></li>
+<li><p>Default umask is 022, you should be aware what this means and how to change this if desired:</p>
+<ul>
+<li>Personal: read/write/execute</li>
+<li>Global/group: read</li>
+</ul></li>
+</ul>
+</div>
+<div id="data-management" class="section level2">
+<h2>Data management</h2>
+<ul>
+<li><p>Users should have a data management plan for their projects. Please see <a href="https://uoe.sharepoint.com/:w:/s/wcbbioinformatics/EQAVC1KoHmtBrA6rUOasQcIBisBh2fIQ3gBp7XA_3zWlxQ?e=c2xMbY">this document</a> for advice.</p></li>
+<li><p>Users should endeavour to minimise disk usage by removing unnecessary files and compressing files where appropriate.</p></li>
+<li><p>Completed projects should be archived with metadata and code to ensure reproducibility.</p></li>
+<li><p>Before you leave the university, please ensure all required data is accessible to your group.</p></li>
+<li><p>Please follow our recommended <a href="best_practices.html">best practices</a> for working on the bifx servers. This web page will be updated semi-regularly.</p></li>
+</ul>
+</div>
+<div id="server-usage" class="section level2">
+<h2>Server usage</h2>
+<ul>
+<li><p>All users must complete our <a href="http://bifx-core3.bio.ed.ac.uk/hyweldd/training/Bioinformatics_on_the_Command_Line/">introduction to linux</a> course, either in their own time or by attending one of our workshops.</p></li>
+<li><p>The bioinformatics servers are a shared environment and users are responsible for ensuring their jobs do not hog computing resources.</p>
+<ul>
+<li><p>Limit simultaneous jobs with large read/write requirements (e.g. genome alignment).</p></li>
+<li><p>Do not set multi-threaded jobs to use the majority of CPUs.</p></li>
+</ul></li>
+<li><p>In particular, users should be aware of Unix commands to monitor their jobs and avoid overuse of computing resources, e.g:</p>
+<ul>
+<li><code>ps / pgrep</code></li>
+<li><code>top / htop</code></li>
+<li><code>nice</code></li>
+<li><code>kill</code></li>
+</ul></li>
+</ul>
+</div>
+<div id="software-and-updates" class="section level2">
+<h2>Software and updates</h2>
+<ul>
+<li><p>The core facility will regularly maintain software and updates. We will strive to provide adequate warning when updates may cause interruption. All communication will be broadcast via the bifx-users mailing list (see below).</p></li>
+<li><p>Details on version control of bioinformatics software and maintaining your own packages are available in our <a href="best_practices.html">best practices</a> section.</p></li>
+</ul>
+</div>
+<div id="backups" class="section level2">
+<h2>Backups</h2>
+<ul>
+<li><p>Data saved in home directories is stored on the University of Edinburgh DataStore service. Two backup systems exist:</p>
+<ul>
+<li><p>Daily ‘snapshots’ kept for two weeks to allow users to restore data.</p></li>
+<li><p>Daily tape backups lept for sixty days in case of total data loss.</p></li>
+</ul></li>
+<li><p>Data in /scratch directories is not backed up. This disk space is provided to speed up analysis but output files should be copied back to your home directory. Please remove data from /scratch regularly to free up space for other users.</p></li>
+<li><p>We recommend that users keep additional backups of key datasets e.g:</p>
+<ul>
+<li>Personal copies on external HDD.</li>
+<li>Online data repositories</li>
+</ul></li>
+</ul>
+</div>
+<div id="mailing-list" class="section level2">
+<h2>Mailing list</h2>
+<p>To join our mailing list, please send an email with no subject line to the following address: <a href="mailto:sympa@mlist.is.ed.ac.uk" class="email">sympa@mlist.is.ed.ac.uk</a></p>
+<p>Include the following 2 lines of text (replacing FIRSTNAME and LASTNAME with your own first name and surname) SUBSCRIBE <a href="mailto:bifx-users@mlist.is.ed.ac.uk" class="email">bifx-users@mlist.is.ed.ac.uk</a> FIRSTNAME LASTNAME QUIT</p>
+</div>
 
 
 

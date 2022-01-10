@@ -20,7 +20,7 @@ Linux operating systems are the workhorse for most large scale genomics applicat
 
 #### Beginner
 
--   [WCB introduction to Linux course](http://bifx-core.bio.ed.ac.uk/hyweldd/training/Bioinformatics_on_the_Command_Line/)
+-   [WCB introduction to Linux course](http://bifx-core3.bio.ed.ac.uk/hyweldd/training/Bioinformatics_on_the_Command_Line/)
 
 -   [Command line cheat-sheet](https://files.fosswire.com/2007/08/fwunixref.pdf)
 
