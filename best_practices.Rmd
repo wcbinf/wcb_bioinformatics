@@ -13,13 +13,3 @@ This page contains a list of best practice documents for managing bioinformatics
 -   [Bioinformatics server user policy](user_policy.html)
 
 -   [Running and managing software on WCB servers](software.html)
-
-    -   Command-line tools
-
-    -   Specialised bioinformatics tools
-
-    -   Manage your own software with Conda
-
-    -   Manage R packages
-
-    -   Manage Perl packages
