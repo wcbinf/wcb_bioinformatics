@@ -1,5 +1,5 @@
 ---
-title: "Bioinformatics servers: User policy"
+title: "Bioinformatics servers: User policy "
 author:  "WCB Bioinformatics Core Facility"
 output:
   html_document:
