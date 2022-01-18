@@ -14,10 +14,19 @@ output:
 
 These servers are fully paid for by the Wellcome Trust Centre for Cell Biology and are managed by the bioinformatics core facility.
 
-Servers on the domains: .bio.ed.ac.uk
+Servers can be accessed via ssh and the University VPN service.
 
--   bifx-core2: Command line usage, R-Studio
--   bifx-core3: Command line usage, R-Studio, R-Shiny, Web-server
+-   bifx-core2.bio.ed.ac.uk (coming soon)
+
+-   bifx-core3.bio.ed.ac.uk
+
+    -   Command line usage
+
+    -   R-Studio: <https://bifx-rstudio.bio.ed.ac.uk/>
+
+    -   R-Shiny: <http://bifx-core3.bio.ed.ac.uk:3838/>
+
+    -   Apache web server
 
 ## Data policy
 
@@ -46,13 +55,15 @@ Servers on the domains: .bio.ed.ac.uk
 
 -   Before you leave the university, please ensure all required data is accessible to your group.
 
+-   Group folders exist on the bifx servers at /groups. These can be used for shared data and for archiving old projects/accounts.
+
 -   Please follow our recommended [best practices](best_practices.html) for working on the bifx servers. This web page will be updated semi-regularly.
 
 ## Server usage
 
 -   All users must complete our [introduction to linux](http://bifx-core3.bio.ed.ac.uk/hyweldd/training/Bioinformatics_on_the_Command_Line/) course, either in their own time or by attending one of our workshops.
 
--   The bioinformatics servers are a shared environment and users are responsible for ensuring their jobs do not hog computing resources.
+-   The bioinformatics servers are a shared environment and users are responsible for ensuring their jobs do not overwhelm computing resources. The servers can cope with high memory usage and multi-threading, however they will slow down when there is a high number of read/write operations.
 
     -   Limit simultaneous jobs with large read/write requirements (e.g. genome alignment).
 
@@ -65,13 +76,15 @@ Servers on the domains: .bio.ed.ac.uk
     -   `nice`
     -   `kill`
 
+-   Use the scratch space in `/scratch` to speed up analyses/downloads/uploads. This is local disk space which will respond quicker. However, it is **NOT BACKED UP** and should be used as temporary storage only. All key datasets should be transferred to your home space.
+
 ## Software and updates
 
 -   The core facility will regularly maintain software and updates. We will strive to provide adequate warning when updates may cause interruption. All communication will be broadcast via the bifx-users mailing list (see below).
 
 -   Details on version control of bioinformatics software and maintaining your own packages are available in our [best practices](best_practices.html) section.
 
-## Backups
+## Storage and Backups
 
 -   Data saved in home directories is stored on the University of Edinburgh DataStore service. Two backup systems exist:
 
@@ -79,7 +92,7 @@ Servers on the domains: .bio.ed.ac.uk
 
     -   Daily tape backups lept for sixty days in case of total data loss.
 
--   Data in /scratch directories is not backed up. This disk space is provided to speed up analysis but output files should be copied back to your home directory. Please remove data from /scratch regularly to free up space for other users.
+-   Data in `/scratch` directories is not backed up. This disk space is provided to speed up analysis but output files should be copied back to your home directory. Please remove data from /scratch regularly to free up space for other users.
 
 -   We recommend that users keep additional backups of key datasets e.g:
 

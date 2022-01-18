@@ -316,7 +316,7 @@ $(document).ready(function () {
 <li><a href="#data-management">Data management</a></li>
 <li><a href="#server-usage">Server usage</a></li>
 <li><a href="#software-and-updates">Software and updates</a></li>
-<li><a href="#backups">Backups</a></li>
+<li><a href="#storage-and-backups">Storage and Backups</a></li>
 <li><a href="#mailing-list">Mailing list</a></li>
 </ul>
 </div>
@@ -325,10 +325,16 @@ $(document).ready(function () {
 <div id="servers" class="section level2">
 <h2>Servers</h2>
 <p>These servers are fully paid for by the Wellcome Trust Centre for Cell Biology and are managed by the bioinformatics core facility.</p>
-<p>Servers on the domains: .bio.ed.ac.uk</p>
+<p>Servers can be accessed via ssh and the University VPN service.</p>
 <ul>
-<li>bifx-core2: Command line usage, R-Studio</li>
-<li>bifx-core3: Command line usage, R-Studio, R-Shiny, Web-server</li>
+<li><p>bifx-core2.bio.ed.ac.uk (coming soon)</p></li>
+<li><p>bifx-core3.bio.ed.ac.uk</p>
+<ul>
+<li><p>Command line usage</p></li>
+<li><p>R-Studio: <a href="https://bifx-rstudio.bio.ed.ac.uk/" class="uri">https://bifx-rstudio.bio.ed.ac.uk/</a></p></li>
+<li><p>R-Shiny: <a href="http://bifx-core3.bio.ed.ac.uk:3838/" class="uri">http://bifx-core3.bio.ed.ac.uk:3838/</a></p></li>
+<li><p>Apache web server</p></li>
+</ul></li>
 </ul>
 </div>
 <div id="data-policy" class="section level2">
@@ -353,6 +359,7 @@ $(document).ready(function () {
 <li><p>Users should endeavour to minimise disk usage by removing unnecessary files and compressing files where appropriate.</p></li>
 <li><p>Completed projects should be archived with metadata and code to ensure reproducibility.</p></li>
 <li><p>Before you leave the university, please ensure all required data is accessible to your group.</p></li>
+<li><p>Group folders exist on the bifx servers at /groups. These can be used for shared data and for archiving old projects/accounts.</p></li>
 <li><p>Please follow our recommended <a href="best_practices.html">best practices</a> for working on the bifx servers. This web page will be updated semi-regularly.</p></li>
 </ul>
 </div>
@@ -360,7 +367,7 @@ $(document).ready(function () {
 <h2>Server usage</h2>
 <ul>
 <li><p>All users must complete our <a href="http://bifx-core3.bio.ed.ac.uk/hyweldd/training/Bioinformatics_on_the_Command_Line/">introduction to linux</a> course, either in their own time or by attending one of our workshops.</p></li>
-<li><p>The bioinformatics servers are a shared environment and users are responsible for ensuring their jobs do not hog computing resources.</p>
+<li><p>The bioinformatics servers are a shared environment and users are responsible for ensuring their jobs do not overwhelm computing resources. The servers can cope with high memory usage and multi-threading, however they will slow down when there is a high number of read/write operations.</p>
 <ul>
 <li><p>Limit simultaneous jobs with large read/write requirements (e.g. genome alignment).</p></li>
 <li><p>Do not set multi-threaded jobs to use the majority of CPUs.</p></li>
@@ -372,6 +379,7 @@ $(document).ready(function () {
 <li><code>nice</code></li>
 <li><code>kill</code></li>
 </ul></li>
+<li><p>Use the scratch space in <code>/scratch</code> to speed up analyses/downloads/uploads. This is local disk space which will respond quicker. However, it is <strong>NOT BACKED UP</strong> and should be used as temporary storage only. All key datasets should be transferred to your home space.</p></li>
 </ul>
 </div>
 <div id="software-and-updates" class="section level2">
@@ -381,15 +389,15 @@ $(document).ready(function () {
 <li><p>Details on version control of bioinformatics software and maintaining your own packages are available in our <a href="best_practices.html">best practices</a> section.</p></li>
 </ul>
 </div>
-<div id="backups" class="section level2">
-<h2>Backups</h2>
+<div id="storage-and-backups" class="section level2">
+<h2>Storage and Backups</h2>
 <ul>
 <li><p>Data saved in home directories is stored on the University of Edinburgh DataStore service. Two backup systems exist:</p>
 <ul>
 <li><p>Daily ‘snapshots’ kept for two weeks to allow users to restore data.</p></li>
 <li><p>Daily tape backups lept for sixty days in case of total data loss.</p></li>
 </ul></li>
-<li><p>Data in /scratch directories is not backed up. This disk space is provided to speed up analysis but output files should be copied back to your home directory. Please remove data from /scratch regularly to free up space for other users.</p></li>
+<li><p>Data in <code>/scratch</code> directories is not backed up. This disk space is provided to speed up analysis but output files should be copied back to your home directory. Please remove data from /scratch regularly to free up space for other users.</p></li>
 <li><p>We recommend that users keep additional backups of key datasets e.g:</p>
 <ul>
 <li>Personal copies on external HDD.</li>
