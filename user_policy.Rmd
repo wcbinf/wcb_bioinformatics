@@ -34,7 +34,7 @@ Servers can be accessed via ssh and the University VPN service.
 
 -   All data on the bifx-\* servers can be viewed by members of the bioinformatics core or the centre director.
 
--   As the bioinformatics core group has superuser permissions, we can see all data on the server. Instructions on how to access the servers are lodged with the centre director in case of emergency. Therefore s/he is a de-facto administrator.
+-   As the bioinformatics core group has superuser permissions, we can see all data on the server. Instructions on how to access the servers are lodged with the centre director in case of emergency. Therefore they are a de-facto administrator.
 
 -   Your data can be accessed by your PI on request. No request is needed if the PI has an account on the server and can view your files. The data stored on the servers should only relate to the Wellcome Centre PI grant holder for the projects and therefore it is reasonable that they can access their own data.
 
@@ -90,7 +90,7 @@ Servers can be accessed via ssh and the University VPN service.
 
     -   Daily 'snapshots' kept for two weeks to allow users to restore data.
 
-    -   Daily tape backups lept for sixty days in case of total data loss.
+    -   Daily tape backups kept for sixty days in case of total data loss.
 
 -   Data in `/scratch` directories is not backed up. This disk space is provided to speed up analysis but output files should be copied back to your home directory. Please remove data from /scratch regularly to free up space for other users.
 
