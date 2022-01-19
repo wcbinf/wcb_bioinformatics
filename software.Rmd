@@ -16,7 +16,11 @@ The command line tools available on the server can be classified as either stand
 
 ### Standard GNU/Linux utilities
 
-The server provides access to a wide range of standard GNU/Linux utilities, which are installed in /usr/bin. \* A general introduction to the use of these utilities can be found at <http://bifx-core.bio.ed.ac.uk/hyweldd/training/Bioinformatics_on_the_Command_Line/index.html> \* A complete list of the available utilities can be obtained by running `ls /usr/bin` on the commmand line. More information on individual utilities can be accessed by running `man [NAME OF UTILITY]` \* A detailed manual covering many of the utilities available can be accessed by running the `info` command on the command line
+The server provides access to a wide range of standard GNU/Linux utilities, which are installed in /usr/bin.
+
+*   A general introduction to the use of these utilities can be found [here](http://bifx-core3.bio.ed.ac.uk/hyweldd/training/Bioinformatics_on_the_Command_Line/index.html).
+*   A complete list of the available utilities can be obtained by running `ls /usr/bin` on the commmand line. More information on individual utilities can be accessed by running `man [NAME OF UTILITY]`
+*   A detailed manual covering many of the utilities available can be accessed by running the `info` command on the command line
 
 ### Specialised bioinformatics tools
 
@@ -262,6 +266,3 @@ For further information, see <https://github.com/libwww-perl/libwww-perl/issues/
 
 ------------------------------------------------------------------------
 
-## Using jupyter notebook on bifx-core servers
-
-[to come]

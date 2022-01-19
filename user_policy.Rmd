@@ -14,13 +14,13 @@ output:
 
 These servers are fully paid for by the Wellcome Trust Centre for Cell Biology and are managed by the bioinformatics core facility.
 
-Servers can be accessed via ssh and the University VPN service.
+Servers can be accessed by users who are logged in to the University VPN service.
 
 -   bifx-core2.bio.ed.ac.uk (coming soon)
 
 -   bifx-core3.bio.ed.ac.uk
 
-    -   Command line usage
+    -   Command line usage (ssh)
 
     -   R-Studio: <https://bifx-rstudio.bio.ed.ac.uk/>
 
@@ -40,10 +40,12 @@ Servers can be accessed via ssh and the University VPN service.
 
 -   Users are responsible for their own data (see backup policy).
 
--   Default umask is 022, you should be aware what this means and how to change this if desired:
+-   By default, when you create a new file on the server it is created with the following permissions:
 
     -   Personal: read/write/execute
     -   Global/group: read
+
+-   This means that only you can change, delete or execute the new file, but anyone logged in to the server can view it. If you would like to change the permissions on a file you can use the `chmod` command. Further details on how to do this can be found by reviewing our introduction to linux course.
 
 ## Data management
 
@@ -92,12 +94,19 @@ Servers can be accessed via ssh and the University VPN service.
 
     -   Daily tape backups kept for sixty days in case of total data loss.
 
--   Data in `/scratch` directories is not backed up. This disk space is provided to speed up analysis but output files should be copied back to your home directory. Please remove data from /scratch regularly to free up space for other users.
+-   Data in `/scratch` directories is not backed up. This disk space is provided to speed up analysis but output files should be copied back to your home directory. Please remove data from /scratch regularly to free up space for other users. Old data may be periodically removed by the bioinformatics core facility to free up space.
 
 -   We recommend that users keep additional backups of key datasets e.g:
 
-    -   Personal copies on external HDD.
-    -   Online data repositories
+    -   Personal copies on encrypted external HDD.
+
+    -   Online research data repositories e.g.
+
+        -   Sequence repositories (GEO, SRA, ArrayExpress)
+
+        -   [Zenodo](https://zenodo.org/)
+
+-   See [here](https://www.ed.ac.uk/infosec/how-to-protect/encrypting) for university advice on encrypting devices.
 
 ## Mailing list
 

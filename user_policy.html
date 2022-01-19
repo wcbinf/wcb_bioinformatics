@@ -325,12 +325,12 @@ $(document).ready(function () {
 <div id="servers" class="section level2">
 <h2>Servers</h2>
 <p>These servers are fully paid for by the Wellcome Trust Centre for Cell Biology and are managed by the bioinformatics core facility.</p>
-<p>Servers can be accessed via ssh and the University VPN service.</p>
+<p>Servers can be accessed by users who are logged in to the University VPN service.</p>
 <ul>
 <li><p>bifx-core2.bio.ed.ac.uk (coming soon)</p></li>
 <li><p>bifx-core3.bio.ed.ac.uk</p>
 <ul>
-<li><p>Command line usage</p></li>
+<li><p>Command line usage (ssh)</p></li>
 <li><p>R-Studio: <a href="https://bifx-rstudio.bio.ed.ac.uk/" class="uri">https://bifx-rstudio.bio.ed.ac.uk/</a></p></li>
 <li><p>R-Shiny: <a href="http://bifx-core3.bio.ed.ac.uk:3838/" class="uri">http://bifx-core3.bio.ed.ac.uk:3838/</a></p></li>
 <li><p>Apache web server</p></li>
@@ -345,11 +345,12 @@ $(document).ready(function () {
 <li><p>As the bioinformatics core group has superuser permissions, we can see all data on the server. Instructions on how to access the servers are lodged with the centre director in case of emergency. Therefore they are a de-facto administrator.</p></li>
 <li><p>Your data can be accessed by your PI on request. No request is needed if the PI has an account on the server and can view your files. The data stored on the servers should only relate to the Wellcome Centre PI grant holder for the projects and therefore it is reasonable that they can access their own data.</p></li>
 <li><p>Users are responsible for their own data (see backup policy).</p></li>
-<li><p>Default umask is 022, you should be aware what this means and how to change this if desired:</p>
+<li><p>By default, when you create a new file on the server it is created with the following permissions:</p>
 <ul>
 <li>Personal: read/write/execute</li>
 <li>Global/group: read</li>
 </ul></li>
+<li><p>This means that only you can change, delete or execute the new file, but anyone logged in to the server can view it. If you would like to change the permissions on a file you can use the <code>chmod</code> command. Further details on how to do this can be found by reviewing our introduction to linux course.</p></li>
 </ul>
 </div>
 <div id="data-management" class="section level2">
@@ -397,12 +398,17 @@ $(document).ready(function () {
 <li><p>Daily ‘snapshots’ kept for two weeks to allow users to restore data.</p></li>
 <li><p>Daily tape backups kept for sixty days in case of total data loss.</p></li>
 </ul></li>
-<li><p>Data in <code>/scratch</code> directories is not backed up. This disk space is provided to speed up analysis but output files should be copied back to your home directory. Please remove data from /scratch regularly to free up space for other users.</p></li>
+<li><p>Data in <code>/scratch</code> directories is not backed up. This disk space is provided to speed up analysis but output files should be copied back to your home directory. Please remove data from /scratch regularly to free up space for other users. Old data may be periodically removed by the bioinformatics core facility to free up space.</p></li>
 <li><p>We recommend that users keep additional backups of key datasets e.g:</p>
 <ul>
-<li>Personal copies on external HDD.</li>
-<li>Online data repositories</li>
+<li><p>Personal copies on encrypted external HDD.</p></li>
+<li><p>Online research data repositories e.g.</p>
+<ul>
+<li><p>Sequence repositories (GEO, SRA, ArrayExpress)</p></li>
+<li><p><a href="https://zenodo.org/">Zenodo</a></p></li>
 </ul></li>
+</ul></li>
+<li><p>See <a href="https://www.ed.ac.uk/infosec/how-to-protect/encrypting">here</a> for university advice on encrypting devices.</p></li>
 </ul>
 </div>
 <div id="mailing-list" class="section level2">
