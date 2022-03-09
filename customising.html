@@ -12,7 +12,7 @@
 <meta name="author" content="WCB Bioinformatics Core Facility" />
 
 
-<title>Best Practices</title>
+<title>Customising your command line experience</title>
 
 <script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
@@ -304,18 +304,52 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Best Practices</h1>
+<h1 class="title toc-ignore">Customising your command line experience</h1>
 <h4 class="author">WCB Bioinformatics Core Facility</h4>
 
 </div>
 
-
-<p>This page contains a list of best practice documents for managing bioinformatics projects and working on the WCB servers.</p>
+<div id="TOC">
 <ul>
-<li><p><a href="user_policy.html">Bioinformatics server user policy</a></p></li>
-<li><p><a href="software.html">Running and managing software on WCB servers</a></p></li>
-<li><p><a href="customising.html">Customising your command line experience</a></p></li>
+<li><a href="#bash-configuration">Bash configuration</a></li>
+<li><a href="#htop">htop</a></li>
 </ul>
+</div>
+
+<div id="bash-configuration" class="section level2">
+<h2>Bash configuration</h2>
+</div>
+<div id="htop" class="section level2">
+<h2>htop</h2>
+<p><code>htop</code> is a modified version of <code>top</code> for interactive system monitoring. It provides an overview of CPU and memory usage as well as running jobs on the server. You can find out more about how to use <code>htop</code> here: <a href="https://www.tecmint.com/htop-linux-process-monitoring/" class="uri">https://www.tecmint.com/htop-linux-process-monitoring/</a></p>
+<p>By default <code>htop</code> will show the usage of each CPU on the machine. Because we have a lot of CPU’s this takes up the entire display making it very difficult to navigate. We recommend editing your htop configuration file <code>~/.config/htop/htopr</code> to the parameters below. This will reduce the CPU usage to a single bar showing average usage and allow you to use htop as intended!</p>
+<pre><code># Beware! This file is rewritten by htop when settings are changed in the interface.
+# The parser is also very primitive, and not human-friendly.
+fields=0 48 17 18 38 39 40 2 46 47 49 1
+sort_key=46
+sort_direction=1
+hide_threads=0
+hide_kernel_threads=0
+hide_userland_threads=0
+shadow_other_users=0
+show_thread_names=0
+show_program_path=1
+highlight_base_name=0
+highlight_megabytes=0
+highlight_threads=1
+tree_view=0
+header_margin=0
+detailed_cpu_time=0
+cpu_count_from_zero=0
+update_process_names=0
+account_guest_in_cpu_meter=0
+color_scheme=0
+delay=15
+left_meters=CPU Memory Swap
+left_meter_modes=1 1 1
+right_meters=CPU Tasks LoadAverage Uptime
+right_meter_modes=1 2 2 2</code></pre>
+</div>
 
 
 

@@ -1,0 +1,44 @@
+---
+title: "Customising your command line experience"
+author:  "WCB Bioinformatics Core Facility"
+output:
+  html_document:
+    fig_width: 1
+    toc: true
+    toc_depth: 2
+---
+
+## Bash configuration
+
+## htop
+
+`htop` is a modified version of `top` for interactive system monitoring. It provides an overview of CPU and memory usage as well as running jobs on the server. You can find out more about how to use `htop` here: <https://www.tecmint.com/htop-linux-process-monitoring/>
+
+By default `htop` will show the usage of each CPU on the machine. Because we have a lot of CPU's this takes up the entire display making it very difficult to navigate. We recommend editing your htop configuration file `~/.config/htop/htopr` to the parameters below. This will reduce the CPU usage to a single bar showing average usage and allow you to use htop as intended!
+
+    # Beware! This file is rewritten by htop when settings are changed in the interface.
+    # The parser is also very primitive, and not human-friendly.
+    fields=0 48 17 18 38 39 40 2 46 47 49 1
+    sort_key=46
+    sort_direction=1
+    hide_threads=0
+    hide_kernel_threads=0
+    hide_userland_threads=0
+    shadow_other_users=0
+    show_thread_names=0
+    show_program_path=1
+    highlight_base_name=0
+    highlight_megabytes=0
+    highlight_threads=1
+    tree_view=0
+    header_margin=0
+    detailed_cpu_time=0
+    cpu_count_from_zero=0
+    update_process_names=0
+    account_guest_in_cpu_meter=0
+    color_scheme=0
+    delay=15
+    left_meters=CPU Memory Swap
+    left_meter_modes=1 1 1
+    right_meters=CPU Tasks LoadAverage Uptime
+    right_meter_modes=1 2 2 2
