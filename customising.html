@@ -311,16 +311,38 @@ $(document).ready(function () {
 
 <div id="TOC">
 <ul>
+<li><a href="#ssh-keys---logging-in-without-a-password">SSH Keys - logging in without a password</a></li>
 <li><a href="#bash-configuration">Bash configuration</a></li>
 <li><a href="#htop">htop</a></li>
+<li><a href="#tmux---terminal-multiplexer">TMUX - Terminal multiplexer</a></li>
 </ul>
 </div>
 
+<div id="ssh-keys---logging-in-without-a-password" class="section level2">
+<h2>SSH Keys - logging in without a password</h2>
+<hr />
+<p>An SSH key is an access credential, similar to a username/password that grants access to the server from a remote computer. You can set up ssh keys between your computer and the server to enable password-less login.</p>
+<p>Firstly create ssh key pairs (public and private) on your own machine (UNIX or Mac terminal):</p>
+<p><code>ssh-keygen</code></p>
+<p>This will ask for a pass-phrase. Just hit enter if you want to avoid entering this every time you login. You should use a pass-phrase if you need to protect your ssh keys from any who may have access to your computer.</p>
+<p>Next, copy the public key to the server:</p>
+<p><code>ssh-copy-id username@bifx-core3.bio.ed.ac.uk</code></p>
+<p>The next time you connect to the server, the SSH protocol will send a message to your computer and attempt to decrypt it with your private key. If it gets the expected response it will authenticate your connection:</p>
+<p><code>ssh username@bifx-core3.bio.ed.ac.uk</code></p>
+<p>Further information:</p>
+<ul>
+<li><p><a href="https://www.digitalocean.com/community/tutorials/ssh-essentials-working-with-ssh-servers-clients-and-keys">How to set up SSH keys</a></p></li>
+<li><p><a href="https://phoenixnap.com/kb/generate-ssh-key-windows-10">Setting up SSH keys on Windows</a></p></li>
+</ul>
+</div>
 <div id="bash-configuration" class="section level2">
 <h2>Bash configuration</h2>
+<hr />
+<p>Coming soon…</p>
 </div>
 <div id="htop" class="section level2">
 <h2>htop</h2>
+<hr />
 <p><code>htop</code> is a modified version of <code>top</code> for interactive system monitoring. It provides an overview of CPU and memory usage as well as running jobs on the server. You can find out more about how to use <code>htop</code> here: <a href="https://www.tecmint.com/htop-linux-process-monitoring/" class="uri">https://www.tecmint.com/htop-linux-process-monitoring/</a></p>
 <p>By default <code>htop</code> will show the usage of each CPU on the machine. Because we have a lot of CPU’s this takes up the entire display making it very difficult to navigate. We recommend editing your htop configuration file <code>~/.config/htop/htopr</code> to the parameters below. This will reduce the CPU usage to a single bar showing average usage and allow you to use htop as intended!</p>
 <pre><code># Beware! This file is rewritten by htop when settings are changed in the interface.
@@ -349,6 +371,23 @@ left_meters=CPU Memory Swap
 left_meter_modes=1 1 1
 right_meters=CPU Tasks LoadAverage Uptime
 right_meter_modes=1 2 2 2</code></pre>
+</div>
+<div id="tmux---terminal-multiplexer" class="section level2">
+<h2>TMUX - Terminal multiplexer</h2>
+<hr />
+<p><strong>TMUX</strong>, the terminal multiplexer, is a program that allows you to manage persistent server sessions and easily switch between programs in one terminal session.</p>
+<ul>
+<li><p>“Detached” <strong>sessions</strong> that continue to run when you close your connection to the server.</p></li>
+<li><p>Manage multiple sessions.</p></li>
+<li><p>Split sessions into <strong>windows</strong> and <strong>panes.</strong></p></li>
+</ul>
+<p>Further resources:</p>
+<ul>
+<li><p><a href="https://tmuxcheatsheet.com/">tmux cheatsheet</a></p></li>
+<li><p><a href="https://github.com/tmux/tmux/wiki">tmux wiki</a></p></li>
+</ul>
+<p><img src="images/tmux-panes.png" title="tmux-panes" width="500" /></p>
+<p><img src="images/tmux.png" title="tmux" width="500" /></p>
 </div>
 
 
