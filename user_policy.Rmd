@@ -1,5 +1,5 @@
 ---
-title: "Bioinformatics servers: User policy "
+title: "Bioinformatics servers and user policy "
 author:  "WCB Bioinformatics Core Facility"
 output:
   html_document:
@@ -10,15 +10,24 @@ output:
 
 ------------------------------------------------------------------------
 
-## Servers
+## Bioinformatics Servers
 
 These servers are fully paid for by the Wellcome Trust Centre for Cell Biology and are managed by the bioinformatics core facility.
 
-Servers can be accessed by users who are logged in to the University VPN service.
+Accounts are limited to members of WCB and centre collaborators. To request an account please contact the bioinformatics team.
+
+Once your account is active, the following servers can be accessed over the university network or via the [VPN service](https://www.ed.ac.uk/information-services/computing/desktop-personal/vpn) by logging in with your EASE credentials.
 
 -   bifx-core2.bio.ed.ac.uk (coming soon)
 
+    -   512Gb RAM
+    -   32 dual CPU cores
+
 -   bifx-core3.bio.ed.ac.uk
+
+    -   1Tb RAM
+
+    -   128 dual CPU cores
 
     -   Command line usage (ssh)
 
@@ -27,6 +36,46 @@ Servers can be accessed by users who are logged in to the University VPN service
     -   R-Shiny: <http://bifx-core3.bio.ed.ac.uk:3838/>
 
     -   Apache web server
+
+------------------------------------------------------------------------
+
+## Server access
+
+For command line access, use the ssh command from a Terminal application in Windows, MacOS and Linux e.g.
+
+-   `ssh -Y username@bifx-core3.bio.ed.ac.uk`
+
+If you prefer to use a graphical interface the servers can be accessed via X2Go or with the Windows Remote Desktop application.
+
+-   X2Go
+
+    -   [Download the X2Go client](https://wiki.x2go.org/doku.php/doc:installation:start)
+
+-   Remote Desktop
+
+    -   Pre-installed on Windows
+
+    -   [Download for Mac from the App store](https://apps.apple.com/us/app/microsoft-remote-desktop/id1295203466?mt=12)
+
+------------------------------------------------------------------------
+
+## R and RStudio
+
+-   RStudio on bifx-core3 can be accessed at <https://bifx-rstudio.bio.ed.ac.uk>
+
+-   A Shiny server is available on the university network only at <http://bifx-core3.bio.ed.ac.uk:3838>
+
+    -   Add your own Shiny Apps to a `ShinyApps` folder in your home directory.
+
+    -   Launch these from http://bifx-core3.bio.ed.ac.uk:3838/username/
+
+------------------------------------------------------------------------
+
+## Web server 
+
+Data on the server can be accessed over the web (e.g. files, images, html documents, IGV/UCSC tracks). Please contact us for details on how to set this up.
+
+------------------------------------------------------------------------
 
 ## Data policy
 
@@ -47,6 +96,8 @@ Servers can be accessed by users who are logged in to the University VPN service
 
 -   This means that only you can change, delete or execute the new file, but anyone logged in to the server can view it. If you would like to change the permissions on a file you can use the `chmod` command. Further details on how to do this can be found by reviewing our introduction to linux course.
 
+------------------------------------------------------------------------
+
 ## Data management
 
 -   Users should have a data management plan for their projects. Please see [this document](https://uoe.sharepoint.com/:w:/s/wcbbioinformatics/EQAVC1KoHmtBrA6rUOasQcIBisBh2fIQ3gBp7XA_3zWlxQ?e=c2xMbY) for advice.
@@ -59,7 +110,9 @@ Servers can be accessed by users who are logged in to the University VPN service
 
 -   Group folders exist on the bifx servers at /groups. These can be used for shared data and for archiving old projects/accounts.
 
--   Please follow our recommended [best practices](best_practices.html) for working on the bifx servers. This web page will be updated semi-regularly.
+-   Please follow our recommended [best practices](best_practices.html) for working on the bifx servers. This web page will be updated regularly.
+
+------------------------------------------------------------------------
 
 ## Server usage
 
@@ -80,18 +133,21 @@ Servers can be accessed by users who are logged in to the University VPN service
 
 -   Use the scratch space in `/scratch` to speed up analyses/downloads/uploads. This is local disk space which will respond quicker. However, it is **NOT BACKED UP** and should be used as temporary storage only. All key datasets should be transferred to your home space.
 
+------------------------------------------------------------------------
+
 ## Software and updates
 
 -   The core facility will regularly maintain software and updates. We will strive to provide adequate warning when updates may cause interruption. All communication will be broadcast via the bifx-users mailing list (see below).
 
 -   Details on version control of bioinformatics software and maintaining your own packages are available in our [best practices](best_practices.html) section.
 
+------------------------------------------------------------------------
+
 ## Storage and Backups
 
 -   Data saved in home directories is stored on the University of Edinburgh DataStore service. Two backup systems exist:
 
     -   Daily 'snapshots' kept for two weeks to allow users to restore data.
-
     -   Daily tape backups kept for sixty days in case of total data loss.
 
 -   Data in `/scratch` directories is not backed up. This disk space is provided to speed up analysis but output files should be copied back to your home directory. Please remove data from /scratch regularly to free up space for other users. Old data may be periodically removed by the bioinformatics core facility to free up space.
@@ -100,16 +156,24 @@ Servers can be accessed by users who are logged in to the University VPN service
 
     -   Personal copies on encrypted external HDD.
 
+        -   See [here](https://www.ed.ac.uk/infosec/how-to-protect/encrypting) for university advice on encrypting devices.
+
     -   Online research data repositories e.g.
 
         -   Sequence repositories (GEO, SRA, ArrayExpress)
 
         -   [Zenodo](https://zenodo.org/)
 
--   See [here](https://www.ed.ac.uk/infosec/how-to-protect/encrypting) for university advice on encrypting devices.
+------------------------------------------------------------------------
 
 ## Mailing list
 
-To join our mailing list, please send an email with no subject line to the following address: [sympa\@mlist.is.ed.ac.uk](mailto:sympa@mlist.is.ed.ac.uk){.email}
+For announcements regarding server issues and updates, please join our mailing list. To join, send an email with no subject line to the following address: [sympa\@mlist.is.ed.ac.uk](mailto:sympa@mlist.is.ed.ac.uk){.email}
 
 Include the following 2 lines of text (replacing FIRSTNAME and LASTNAME with your own first name and surname) SUBSCRIBE [bifx-users\@mlist.is.ed.ac.uk](mailto:bifx-users@mlist.is.ed.ac.uk){.email} FIRSTNAME LASTNAME QUIT
+
+------------------------------------------------------------------------
+
+## Further information
+
+Further information, including how to join our Slack channel and details of our Bioinformatics Live sessions, is available on our [website](https://uoe.sharepoint.com/sites/wcbbifx-core).

@@ -12,7 +12,7 @@
 <meta name="author" content="WCB Bioinformatics Core Facility" />
 
 
-<title>Bioinformatics servers: User policy</title>
+<title>Bioinformatics servers and user policy</title>
 
 <script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
@@ -304,38 +304,87 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Bioinformatics servers: User policy</h1>
+<h1 class="title toc-ignore">Bioinformatics servers and user policy</h1>
 <h4 class="author">WCB Bioinformatics Core Facility</h4>
 
 </div>
 
 <div id="TOC">
 <ul>
-<li><a href="#servers">Servers</a></li>
+<li><a href="#bioinformatics-servers">Bioinformatics Servers</a></li>
+<li><a href="#server-access">Server access</a></li>
+<li><a href="#r-and-rstudio">R and RStudio</a></li>
+<li><a href="#web-server">Web server</a></li>
 <li><a href="#data-policy">Data policy</a></li>
 <li><a href="#data-management">Data management</a></li>
 <li><a href="#server-usage">Server usage</a></li>
 <li><a href="#software-and-updates">Software and updates</a></li>
 <li><a href="#storage-and-backups">Storage and Backups</a></li>
 <li><a href="#mailing-list">Mailing list</a></li>
+<li><a href="#further-information">Further information</a></li>
 </ul>
 </div>
 
 <hr />
-<div id="servers" class="section level2">
-<h2>Servers</h2>
+<div id="bioinformatics-servers" class="section level2">
+<h2>Bioinformatics Servers</h2>
 <p>These servers are fully paid for by the Wellcome Trust Centre for Cell Biology and are managed by the bioinformatics core facility.</p>
-<p>Servers can be accessed by users who are logged in to the University VPN service.</p>
+<p>Accounts are limited to members of WCB and centre collaborators. To request an account please contact the bioinformatics team.</p>
+<p>Once your account is active, the following servers can be accessed over the university network or via the <a href="https://www.ed.ac.uk/information-services/computing/desktop-personal/vpn">VPN service</a> by logging in with your EASE credentials.</p>
 <ul>
-<li><p>bifx-core2.bio.ed.ac.uk (coming soon)</p></li>
+<li><p>bifx-core2.bio.ed.ac.uk (coming soon)</p>
+<ul>
+<li>512Gb RAM</li>
+<li>32 dual CPU cores</li>
+</ul></li>
 <li><p>bifx-core3.bio.ed.ac.uk</p>
 <ul>
+<li><p>1Tb RAM</p></li>
+<li><p>128 dual CPU cores</p></li>
 <li><p>Command line usage (ssh)</p></li>
 <li><p>R-Studio: <a href="https://bifx-rstudio.bio.ed.ac.uk/" class="uri">https://bifx-rstudio.bio.ed.ac.uk/</a></p></li>
 <li><p>R-Shiny: <a href="http://bifx-core3.bio.ed.ac.uk:3838/" class="uri">http://bifx-core3.bio.ed.ac.uk:3838/</a></p></li>
 <li><p>Apache web server</p></li>
 </ul></li>
 </ul>
+<hr />
+</div>
+<div id="server-access" class="section level2">
+<h2>Server access</h2>
+<p>For command line access, use the ssh command from a Terminal application in Windows, MacOS and Linux e.g.</p>
+<ul>
+<li><code>ssh -Y username@bifx-core3.bio.ed.ac.uk</code></li>
+</ul>
+<p>If you prefer to use a graphical interface the servers can be accessed via X2Go or with the Windows Remote Desktop application.</p>
+<ul>
+<li><p>X2Go</p>
+<ul>
+<li><a href="https://wiki.x2go.org/doku.php/doc:installation:start">Download the X2Go client</a></li>
+</ul></li>
+<li><p>Remote Desktop</p>
+<ul>
+<li><p>Pre-installed on Windows</p></li>
+<li><p><a href="https://apps.apple.com/us/app/microsoft-remote-desktop/id1295203466?mt=12">Download for Mac from the App store</a></p></li>
+</ul></li>
+</ul>
+<hr />
+</div>
+<div id="r-and-rstudio" class="section level2">
+<h2>R and RStudio</h2>
+<ul>
+<li><p>RStudio on bifx-core3 can be accessed at <a href="https://bifx-rstudio.bio.ed.ac.uk" class="uri">https://bifx-rstudio.bio.ed.ac.uk</a></p></li>
+<li><p>A Shiny server is available on the university network only at <a href="http://bifx-core3.bio.ed.ac.uk:3838" class="uri">http://bifx-core3.bio.ed.ac.uk:3838</a></p>
+<ul>
+<li><p>Add your own Shiny Apps to a <code>ShinyApps</code> folder in your home directory.</p></li>
+<li><p>Launch these from <a href="http://bifx-core3.bio.ed.ac.uk:3838/username/" class="uri">http://bifx-core3.bio.ed.ac.uk:3838/username/</a></p></li>
+</ul></li>
+</ul>
+<hr />
+</div>
+<div id="web-server" class="section level2">
+<h2>Web server</h2>
+<p>Data on the server can be accessed over the web (e.g. files, images, html documents, IGV/UCSC tracks). Please contact us for details on how to set this up.</p>
+<hr />
 </div>
 <div id="data-policy" class="section level2">
 <h2>Data policy</h2>
@@ -352,6 +401,7 @@ $(document).ready(function () {
 </ul></li>
 <li><p>This means that only you can change, delete or execute the new file, but anyone logged in to the server can view it. If you would like to change the permissions on a file you can use the <code>chmod</code> command. Further details on how to do this can be found by reviewing our introduction to linux course.</p></li>
 </ul>
+<hr />
 </div>
 <div id="data-management" class="section level2">
 <h2>Data management</h2>
@@ -361,8 +411,9 @@ $(document).ready(function () {
 <li><p>Completed projects should be archived with metadata and code to ensure reproducibility.</p></li>
 <li><p>Before you leave the university, please ensure all required data is accessible to your group.</p></li>
 <li><p>Group folders exist on the bifx servers at /groups. These can be used for shared data and for archiving old projects/accounts.</p></li>
-<li><p>Please follow our recommended <a href="best_practices.html">best practices</a> for working on the bifx servers. This web page will be updated semi-regularly.</p></li>
+<li><p>Please follow our recommended <a href="best_practices.html">best practices</a> for working on the bifx servers. This web page will be updated regularly.</p></li>
 </ul>
+<hr />
 </div>
 <div id="server-usage" class="section level2">
 <h2>Server usage</h2>
@@ -382,6 +433,7 @@ $(document).ready(function () {
 </ul></li>
 <li><p>Use the scratch space in <code>/scratch</code> to speed up analyses/downloads/uploads. This is local disk space which will respond quicker. However, it is <strong>NOT BACKED UP</strong> and should be used as temporary storage only. All key datasets should be transferred to your home space.</p></li>
 </ul>
+<hr />
 </div>
 <div id="software-and-updates" class="section level2">
 <h2>Software and updates</h2>
@@ -389,32 +441,41 @@ $(document).ready(function () {
 <li><p>The core facility will regularly maintain software and updates. We will strive to provide adequate warning when updates may cause interruption. All communication will be broadcast via the bifx-users mailing list (see below).</p></li>
 <li><p>Details on version control of bioinformatics software and maintaining your own packages are available in our <a href="best_practices.html">best practices</a> section.</p></li>
 </ul>
+<hr />
 </div>
 <div id="storage-and-backups" class="section level2">
 <h2>Storage and Backups</h2>
 <ul>
 <li><p>Data saved in home directories is stored on the University of Edinburgh DataStore service. Two backup systems exist:</p>
 <ul>
-<li><p>Daily ‘snapshots’ kept for two weeks to allow users to restore data.</p></li>
-<li><p>Daily tape backups kept for sixty days in case of total data loss.</p></li>
+<li>Daily ‘snapshots’ kept for two weeks to allow users to restore data.</li>
+<li>Daily tape backups kept for sixty days in case of total data loss.</li>
 </ul></li>
 <li><p>Data in <code>/scratch</code> directories is not backed up. This disk space is provided to speed up analysis but output files should be copied back to your home directory. Please remove data from /scratch regularly to free up space for other users. Old data may be periodically removed by the bioinformatics core facility to free up space.</p></li>
 <li><p>We recommend that users keep additional backups of key datasets e.g:</p>
 <ul>
-<li><p>Personal copies on encrypted external HDD.</p></li>
+<li><p>Personal copies on encrypted external HDD.</p>
+<ul>
+<li>See <a href="https://www.ed.ac.uk/infosec/how-to-protect/encrypting">here</a> for university advice on encrypting devices.</li>
+</ul></li>
 <li><p>Online research data repositories e.g.</p>
 <ul>
 <li><p>Sequence repositories (GEO, SRA, ArrayExpress)</p></li>
 <li><p><a href="https://zenodo.org/">Zenodo</a></p></li>
 </ul></li>
 </ul></li>
-<li><p>See <a href="https://www.ed.ac.uk/infosec/how-to-protect/encrypting">here</a> for university advice on encrypting devices.</p></li>
 </ul>
+<hr />
 </div>
 <div id="mailing-list" class="section level2">
 <h2>Mailing list</h2>
-<p>To join our mailing list, please send an email with no subject line to the following address: <a href="mailto:sympa@mlist.is.ed.ac.uk" class="email">sympa@mlist.is.ed.ac.uk</a></p>
+<p>For announcements regarding server issues and updates, please join our mailing list. To join, send an email with no subject line to the following address: <a href="mailto:sympa@mlist.is.ed.ac.uk" class="email">sympa@mlist.is.ed.ac.uk</a></p>
 <p>Include the following 2 lines of text (replacing FIRSTNAME and LASTNAME with your own first name and surname) SUBSCRIBE <a href="mailto:bifx-users@mlist.is.ed.ac.uk" class="email">bifx-users@mlist.is.ed.ac.uk</a> FIRSTNAME LASTNAME QUIT</p>
+<hr />
+</div>
+<div id="further-information" class="section level2">
+<h2>Further information</h2>
+<p>Further information, including how to join our Slack channel and details of our Bioinformatics Live sessions, is available on our <a href="https://uoe.sharepoint.com/sites/wcbbifx-core">website</a>.</p>
 </div>
 
 
