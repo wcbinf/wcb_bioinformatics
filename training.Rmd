@@ -62,6 +62,8 @@ R is a programming language designed for data retrieval, manipulation and visual
 
 #### Advanced topics
 
+-   [WCB R with genomics data course](https://swebb1.github.io/R-with-Genomics-Data/)
+
 -   [Advanced R](https://adv-r.hadley.nz/)
 
 -   [R Packages](https://r-pkgs.org/)
@@ -126,15 +128,13 @@ In most cases, the pipelines provided are simple and generic and may not be suit
 
 #### RNA-seq
 
--   [WCB Introduction to Next-Gen Sequencing data analysis](http://bifx-core.bio.ed.ac.uk/training/NGS_workshop/NGS_workshop.html) (Linux command line)
+-   [WCB RNA-seq analysis](https://swebb1.github.io/RNA-seq_workshop) (Linux command line)
 
 -   [Differential expression with DESeq2](https://www.bioconductor.org/packages/devel/workflows/vignettes/rnaseqGene/inst/doc/rnaseqGene.html) (R)
 
--   [RNA-seq and differential expression analysis](https://ucdavis-bioinformatics-training.github.io/2019_March_UCSF_mRNAseq_Workshop/) (command line and R)
-
 #### Hi-C
 
--   [WCB Hi-C data analysis workshop](http://bifx-core.bio.ed.ac.uk/Dan/Training/HiC_Workshop/HiC_Workshop_2019.html) (command line)
+-   [WCB Hi-C data analysis](https://danrobertson87.github.io/2022_hic_workshop.github.io) (command line)
 
 #### CLIP/CRAC
 
@@ -147,10 +147,6 @@ In most cases, the pipelines provided are simple and generic and may not be suit
 #### Methyl-seq
 
 -   [QC and alignment of BS-seq data using Bismark](https://www.bioinformatics.babraham.ac.uk/training/Methylation_Course/Basic%20BS-Seq%20processing%20Exercises.pdf) (command line)
-
-#### Annotating and plotting genomic data
-
--   [WCB Genomic data in R](http://bifx-core.bio.ed.ac.uk/training/ROI_workshop/R_roi_workshop.html) (R)
 
 ------------------------------------------------------------------------
 
@@ -170,7 +166,7 @@ In most cases, the pipelines provided are simple and generic and may not be suit
 
 [Harvard Chan Bioinformatics Core](https://github.com/hbctraining)
 
--   Training courses in R including many different HTS techniques.
+-   Training courses in R and command line including many different HTS techniques.
 
 [Babraham Bioinformatics](https://www.bioinformatics.babraham.ac.uk/training.html)
 
