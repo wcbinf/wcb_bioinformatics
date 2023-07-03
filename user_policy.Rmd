@@ -18,23 +18,22 @@ Accounts are limited to members of WCB and centre collaborators. To request an a
 
 Once your account is active, the following servers can be accessed over the university network or via the [VPN service](https://www.ed.ac.uk/information-services/computing/desktop-personal/vpn) by logging in with your EASE credentials.
 
--   bifx-core2.bio.ed.ac.uk (coming soon)
-
-    -   512Gb RAM
-    -   32 dual CPU cores
-
 -   bifx-core3.bio.ed.ac.uk
 
     -   1Tb RAM
-
     -   128 dual CPU cores
-
     -   Command line usage (ssh)
-
     -   R-Studio: <https://bifx-rstudio.bio.ed.ac.uk/>
-
     -   R-Shiny: <http://bifx-core3.bio.ed.ac.uk:3838/>
+    -   Apache web server
 
+-   bifx-core2.bio.ed.ac.uk
+
+    -   512Gb RAM
+    -   32 dual CPU cores
+    -   Command line usage (ssh)
+    -   R-Studio: <http://bifx-core2.bio.ed.ac.uk:8787/>
+    -   R-Shiny: <http://bifx-core2.bio.ed.ac.uk:3838/>
     -   Apache web server
 
 ------------------------------------------------------------------------
